@@ -13,7 +13,7 @@ function ProductList() {
         productService.getProducts()
         .then(result => setProducts(result.data.data)) //axios result.data dediğimizde tüm json o alır. .data diyerek data içindeki data
         .catch();
-    })
+    },[])
 
     return (
         <div>
@@ -34,7 +34,7 @@ function ProductList() {
                             <Table.Row key={product.id}>
                                 <Table.Cell>{product.productName}</Table.Cell>
                                 <Table.Cell>{product.unitPrice}</Table.Cell>
-                                <Table.Cell>{product.unitInStock}</Table.Cell>
+                                <Table.Cell>{product.unitsInStock}</Table.Cell>
                                 <Table.Cell>{product.quantityPerUnit}</Table.Cell>
                                 <Table.Cell>{product.category.categoryName}</Table.Cell>
                                 

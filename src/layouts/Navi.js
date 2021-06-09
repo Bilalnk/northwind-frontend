@@ -8,22 +8,16 @@ function Navi() {
             <Menu inverted fixed="top">
                 <Container>
 
-                    <Menu.Item
-                        name='home'
-
-                    />
-                    <Menu.Item
-                        name='messages'
-
-                    />
-
+                    <Menu.Item name='home' />
+                    <Menu.Item name='messages' />
                     <Menu.Menu position='right'>
 
-                    <CartSummary></CartSummary>
+                        <CartSummary></CartSummary>
 
                         <Menu.Item>
                             <Button primary>Sign Up</Button>
                         </Menu.Item>
+                        
                     </Menu.Menu>
 
                 </Container>

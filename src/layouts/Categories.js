@@ -11,7 +11,6 @@ function Categories() {
         categoryService.getCategories()
             .then(result => setCategories(result.data.data))
             .catch();
-        //  console.log(result)
     }, []);
 
     return (
@@ -19,7 +18,9 @@ function Categories() {
             <Menu pointing vertical>
                 {
                     categories.map(category => (
-                        <Menu.Item key={category.id} name={category.categoryName} />
+                        <Menu.Item key={category.categoryId}>
+                            {category.categoryName}{category.id}
+                        </Menu.Item>
                     ))
                 }
 

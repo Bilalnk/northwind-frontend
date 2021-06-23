@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import { Icon, Label, Menu, Table, Button } from 'semantic-ui-react'
 import ProductService from '../services/productService'
-
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../store/actions/cardActions'
+import { toast } from 'react-toastify'
 
 function ProductList() {
+
+
+    const dispatch = useDispatch() // bir fonksiyon çağırmak için kullanılmaktadır.
 
     const [products, setProducts] = useState([])
 
@@ -17,6 +22,11 @@ function ProductList() {
     },[])
 
 
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
+        toast.success(`${product.productName} sepete eklendi`)
+    }
+
 
     return (
         <div>
@@ -28,6 +38,7 @@ function ProductList() {
                         <Table.HeaderCell>Stok Adedi</Table.HeaderCell>
                         <Table.HeaderCell>Açıklama</Table.HeaderCell>
                         <Table.HeaderCell>Kategori</Table.HeaderCell>
+                        <Table.HeaderCell></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -40,6 +51,7 @@ function ProductList() {
                                 <Table.Cell>{product.unitsInStock}</Table.Cell>
                                 <Table.Cell>{product.quantityPerUnit}</Table.Cell>
                                 <Table.Cell>{product.category.categoryName}</Table.Cell>
+                                <Table.Cell><Button onClick ={() => handleAddToCart(product)}>Sepete Ekle</Button></Table.Cell>
                                 
                             </Table.Row>
                         ))

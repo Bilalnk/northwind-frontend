@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
-import {Button, Card, CardMeta, Image} from "semantic-ui-react";
+import {Button, Card, Image} from "semantic-ui-react";
 import ProductService from "../services/productService";
 
 function ProductDetail() {
@@ -12,7 +12,6 @@ function ProductDetail() {
     useEffect(() => {
         let productService = new ProductService()
         productService.getByProductName(name).then(result => setProduct(result.data.data))
-        console.log(product)
         console.log(product)
         console.log(product)
     }, []);
